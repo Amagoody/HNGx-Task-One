@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta cherset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>FRONT-END TRACK STAGE ONE TASK</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: left;
+            }
+            .image-with-space {
+                margin-right: 20px;
+                float: left;
+            }
+            .data-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }  
+            
+        </style>
+    </head>
+    <body>
+        <div class="data-container" data-testid="personal-data">
+
+            <hi data-testid="slackUserName">Amagoody</hi>
+            <img class="image-with-space" src="images/slack-profile-picture.jpg" alt="Amagoody" data-testid="slackDisplayImage" style="width: 300px; height: auto;">
+            <p data-testid="currentDayOfTheWeek">Thursday</p>
+            <p data-testid="currentUTCTime" id="utc-time">UTC+1 WAT 12:16pm</p>
+            <p data-testid="myTrack">Front-end</p>
+            <p data-testid="githubURL">
+                <a href="" target="blank">GitHub Repository</a>
+            </p>
+        </div>
+        <script>
+            function updateTime() {
+                const utcTimeElement = document.getElementById("utc-time");
+                const now = new Date();
+                
+                const options = {
+                    timeZone: "UTC+1 WAT", 
+                    hour12: true,
+                    hour: 'numeric', 
+                    minute: 'numeric',
+                    second: 'numeric',
+                    timeZoneName: 'short'
+                };
+        
+                const timeString = now.toLocaleString("en-US", options);
+                utcTimeElement.textContent = `UTC+1 WAT ${timeString}`;
+            }
+        
+            // Update the time every second (1000 milliseconds)
+            setInterval(updateTime, 1000);
+        
+            // Call updateTime() immediately to display the time on page load
+            updateTime();
+        </script>
+    </body>
+</html>
